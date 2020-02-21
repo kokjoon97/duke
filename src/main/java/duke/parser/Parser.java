@@ -8,7 +8,6 @@ import duke.commands.ClearCommand;
 import duke.commands.Command;
 import duke.commands.DeleteCommand;
 import duke.commands.DoneCommand;
-import duke.commands.FindCommand;
 import duke.commands.HelpCommand;
 import duke.commands.ListCommand;
 import duke.exception.FormatErrorException;
@@ -83,24 +82,10 @@ public class Parser {
         case "help":
             createHelpCommand();
             break;
-        case "find":
-            createFindCommand();
-            break;
         default:
             throw new InvalidInputException();
         }
         return newCommand;
-    }
-
-    /**
-     * Initialises the FindCommand.
-     */
-    private static void createFindCommand() {
-        if (phrases.length == 1) {
-            newCommand = new ListCommand();
-        } else {
-            newCommand = new FindCommand(phrases[1]);
-        }
     }
 
     /**
